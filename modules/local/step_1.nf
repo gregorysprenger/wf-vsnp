@@ -2,6 +2,9 @@ process STEP_1 {
     publishDir "${params.outpath}",
         mode: "${params.publish_dir_mode}",
         pattern: "alignment*/*"
+    publishDir "${params.logpath}",
+        mode: "${params.publish_dir_mode}",
+        pattern: "run_log.txt"
     publishDir "${params.process_log_dir}",
         mode: "${params.publish_dir_mode}",
         pattern: ".command.*",
@@ -16,6 +19,7 @@ process STEP_1 {
     output:
         path "alignment*/*_zc.vcf", emit: step1_vcf
         path "alignment*/*"
+        path "run_log.txt"
         path ".command.out"
         path ".command.err"
         path "versions.yml", emit: versions
@@ -25,9 +29,10 @@ process STEP_1 {
         source bash_functions.sh
 
         # !{params.refpath} is copied to work dir
-        # To avoid absolute path, use work dir by using $PWD
+        # To avoid absolute path, use work dir by using `pwd`
         vsnp3_path_adder.py -d `pwd`
         
+        # Run vSNP3 Step 1
         vsnp3_step1.py -r1 !{input[0]} -r2 !{input[1]} -t !{ref}
 
         # Rename alignment_reference_name to alignment_sample_id
