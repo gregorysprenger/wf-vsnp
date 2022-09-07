@@ -24,8 +24,10 @@ process STEP_2 {
         '''
         source bash_functions.sh
 
-        cp !{step1_vcf} ./!{vcfs}/
-        vsnp3_step2.py -wd ./!{vcfs} -a -t !{ref}
+        vsnp3_path_adder.py -d `pwd`
+
+        #cp !{step1_vcf} !{vcfs}/
+        vsnp3_step2.py -wd !{vcfs} -t !{ref}
 
         # Get process version
         cat <<-END_VERSIONS > versions.yml
