@@ -159,7 +159,6 @@ workflow {
     input_ch = Channel.fromFilePairs(params.inpath+'/*R{1,2}*.fastq.gz', checkIfExists: true)
     ref_ch = Channel.fromPath(params.refpath, checkIfExists: true)
     vcf_ch = Channel.fromPath(params.vcfpath, checkIfExists: true)
-    output_ch = Channel.fromPath(params.outpath)
     ch_versions = Channel.empty()
 
     // PROCESS: Read files from input directory, validate and stage input files
