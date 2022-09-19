@@ -3,6 +3,7 @@
 <br>
 
 ![workflow](images/workflow_v1.0.0.png)
+
 *A schematic of the steps in the workflow.*
 
 <br>
