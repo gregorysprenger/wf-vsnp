@@ -1,5 +1,6 @@
-# vSNP3
-
+# vSNP3 Workflow
+This Nextflow workflow is an implementation of [vSNP3](https://github.com/USDA-VS/vsnp3). See their GitHub repository for other uses that may not be implemented here.
+<br>
 <br>
 
 ![workflow](images/workflow_v1.0.0.png)
